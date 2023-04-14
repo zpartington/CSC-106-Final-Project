@@ -1,0 +1,25 @@
+Blackjack - Zack P. and Josh M. CSC 106 Final Project
+
+// Goal is to create a Blackjack program that allowsa  user to play against a CPU 
+
+
+
+// Need an array that holds all 52 cards 
+
+
+//Create start screen for Blackjack game - scene creation
+
+
+//Title text - print out the words: BlackJack  in a good looking font  
+
+
+//Create a logo image for blackjack (a few cards and a poker chip)
+
+
+//Add game instructions  - (Add a button that when clicked brings up a screen that shows how to play Blackjack)
+
+
+//Make an array - create an array called "cardDeck" array that will hold the 52 cards in a standard deck 
+
+
+//Create the start button for the game that sends the user into a game screen
