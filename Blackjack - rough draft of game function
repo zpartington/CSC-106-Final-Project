@@ -1,0 +1,106 @@
+/* **NOTE** - need to add ability to hit and stand. right now the program just runs through the scenarios by itself */
+
+//ROUGH DRAFT OF GAME FUNCTIONS FOR BLACKJACK 
+
+
+var cardDeck = ["2D", "3D", "4D", "5D", "6D", "7D", "8D", "9D", "10D",
+  "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H", "10H",
+  "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C",
+  "2S", "3S", "4S", "5S", "6S", "7S", "8S", "9S", "10S",
+  'KD', 'QD', 'JD', 'AD',
+  'KH', 'QH', 'JH', 'AH',
+  'KC', 'QC', 'JC', 'AC',
+  'KS', 'QS', 'JS', 'AS'
+];
+
+function getRandomCard() {
+/*this code creates a random "floating point" or decimal number between 0 and 1 and then multiplies it by the length of the array, (52 things in this case) then takes the floor of it (so that it converts it back to the next lowest whole number again). This allows the game to "shuffle" a random card from the cardDeck array everytime it runs*/
+  return cardDeck[floor(random(0,1) * cardDeck.length)];
+}
+
+function getCardValue(card) {
+    /*the cardNumber local variable is taking the first character out of the string in the       array. Our first thought was to use card.slice(0, 1) to extract the card's numeric value     , but that would only work for cards with a value of 2-9. If it becomes a two digit          number (just for 10) it needs another space to be considered. card.length - 1 makes it       so that no matter the size of the string's number value, it will still be taken out and      it turned into a number value with the parseFloat(); function we used later on*/
+  var cardNumber = card.slice(0, card.length - 1);
+  if (cardNumber === 'K' || cardNumber === 'Q' || cardNumber === 'J') {
+    return 10;
+  } else if (cardNumber === 'A') {
+    return 11;
+  } else {
+    /*this command parseFloat(); turns the string (from cardNumber) in our cardDeck array        into an actual number that can be used for the scoring system math. without this it would     just be a string thats not useable to calculate.  
+    W3 Schools reference link --> https://www.w3schools.com/jsref/jsref_parsefloat.asp*/
+    return parseFloat(cardNumber);
+  }
+}
+
+/*score keeping function to get the value of each hand so it can be displayed later on the screen and a winner can be picked*/
+function getHandValue(hand) {
+  var value = 0;
+  var aces = 0;
+  //for loop to "check" through the entire length of a given hand 
+  for (var i = 0; i < hand.length; i++) {
+    /*uses the getCardValue function we made earlier to check the value of the index that it     lands on for each iteration of the loop*/
+    var cardValue = getCardValue(hand[i]);
+    /*special circumstances for aces (can be considered either worth 11 or 1) depending on       the hand*/
+    if (cardValue === 11) {
+      aces = aces + 1;
+    }
+    value = value + cardValue;
+  }
+  while (value > 21 && aces > 0) {
+    value = value - 10;
+    aces = aces - 1;
+  }
+  return value;
+}
+
+
+/*This function is putting everything together (into an actual working game format) that can be called later (with blackjack();) it uses the previously defined functions getHandValue and getRandomCard*/
+function blackjack() {
+  var playerHand = [getRandomCard(), getRandomCard()];
+  var dealerHand = [getRandomCard(), getRandomCard()];
+  var playerValue = getHandValue(playerHand);
+  var dealerValue = getHandValue(dealerHand);
+
+  while (playerValue < 17) {
+    //pushes a new card into player's hand if the value is less than 17
+    playerHand.push(getRandomCard());
+    playerValue = getHandValue(playerHand);
+  }
+
+  while (dealerValue < 17) {
+    //pushes a new card into dealer's hand if the value is less than 17
+    dealerHand.push(getRandomCard());
+    dealerValue = getHandValue(dealerHand);
+  }
+
+  background(199, 153, 0);
+  textSize(24);
+  fill(255, 255, 255);
+    /*display for the current hand and the value of each hand (both Player and Dealer)
+    We used the .join method to 
+    W3 schools link --> https://www.w3schools.com/jsref/jsref_join.asp 
+    this just takes the array for each of the player's "hands" and joins the elements      of     the arrays into a string with commas in it*/
+  text("Player's Hand: " + playerHand.join(", "), 10, 50);
+  text("Player Score: " + playerValue, 10, 80);
+  text("Dealer's Hand: " + dealerHand.join(", "), 10, 140);
+  text("Dealer's Score: " + dealerValue, 10, 170);
+
+  if (playerValue > 21) {
+    /*This is the text that actually displays the result of the game. The word "bust"             means a loss in Blackjack */
+    text("Player busts, dealer wins!", 10, 230);
+  } else if (dealerValue > 21) {
+    text("Dealer busts, player wins!", 10, 230);
+  } else if (playerValue > dealerValue) {
+    text("Player wins!", 10, 230);
+  } else if (playerValue < dealerValue) {
+    text("Dealer wins!", 10, 230);
+  } else {
+    text("It's a tie!", 10, 230);
+  }
+}
+
+//function to call the game of blackjack each time the mouse is clicked. 
+function mouseClicked() {
+  blackjack();
+}
+
