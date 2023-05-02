@@ -1,0 +1,23 @@
+//I FOUND A WAY TO DRAW CRADS IN TEXT FORMAT
+//link --> https://symbl.cc/en/unicode/blocks/playing-cards/
+
+
+//clubs (♣), diamonds (♦), hearts (♥), and spades (♠)
+
+//EXAMPLES BELOW
+fill(0, 0, 0);
+textSize(49);
+text("♣", 222, 149);
+
+fill(255, 0, 0);
+text("♦", 225, 223);
+
+fill(255, 0, 0);
+text("♥", 221, 317);
+
+fill(0, 0, 0);
+text("♠", 223, 383);
+ 
+fill(255, 0, 0);
+textSize(120);
+text("🂠", 13, 109);
