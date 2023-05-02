@@ -1,0 +1,428 @@
+// GOAl --> create a Blackjack program that allows a user to play against a CPU opponent
+
+
+//STEP 1 = create deck of cards and player + dealer hands
+//you want 52 things in this array for 52 cards
+
+//For the purpose of the "cardDeck" Array:
+//there are 4 sets of 9 "number cards" (ranging from 2-10), and 4 sets of 4 "face cards"     //The 4 Face cards are labeled as -->  K = King, Q = Queen, J = Jack, A = Ace
+
+//SUITS OF THE CARDS LISTED BELOW:
+//D = Diamonds
+//H = Hearts
+//C = Clubs
+//S = Spades
+
+var cardDeck = ["2D","3D","4D","5D","6D","7D","8D","9D","10D",
+"2H","3H","4H","5H","6H","7H","8H","9H","10H", 
+"2C","3C","4C","5C","6C","7C","8C","9C","10C", 
+"2S","3S","4S","5S","6S","7S","8S","9S","10S", 
+'KD','QD','JD','AD', 
+'KH','QH','JH','AH', 
+'KC','QC','JC','AC',
+'KS','QS','JS','AS'];
+
+//Create 2 empty arrays 
+//array for the dealer 
+var dealerCards = [];
+//array for the player.
+var playerCards = [];
+
+//from there you need to figure you how to 
+//STEP 2- deal the cards
+
+
+
+//STEP 3- tally up scores
+//STEP 4 - see who wins
+
+//from here you would start the process all over again (hint: what would allow you to start this process over again without having to code it all through)
+
+
+//Create another array for the suits (Diamond, Hearts, Clubs, Spades)
+//var cardSuit = [Diamond, Heart, Club, Spade];
+
+
+//array that holds all chips for the player
+var playerChips = [];
+
+
+
+//constructors function for chips
+var Chips = function(input) 
+{
+    this.x = input.x || 0;
+    this.y = input.y || 0;
+    this.width = input.width || 150;
+    this.height = input.height || 50;
+    this.monetaryValue = input.monetaryValue || 0;
+
+    this.color = input.color || 0;
+};
+
+
+//Create start screen for Blackjack game - scene creation
+//Title text - print out the words: BlackJack  in a good looking font  
+
+var currentScene = 0;
+
+/* Copy in the Khan Button class */
+var Button = function(config) 
+{
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 150;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+    this.onClick = config.onClick || function() {};
+};
+
+Button.prototype.draw = function() 
+{
+    strokeWeight(4);
+    stroke(255, 23, 23);
+    fill(255, 255, 255);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    //textAlign(LEFT, TOP);
+    text(this.label, this.x+27, this.y+this.height/1.5);
+};
+
+Button.prototype.isMouseInside = function() 
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+
+Button.prototype.handleMouseClick = function() 
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+
+var startButton = new Button 
+({
+    x: 128,
+    y: 234,
+    label: "Start Game",
+    onClick: function() {
+        currentScene = 2;
+    }
+});
+
+var instrucButton = new Button 
+({
+    x: 128,
+    y: 296,
+    label: "Instructions",
+    onClick: function() {
+        currentScene = 1;
+    }
+});
+
+var backButton = new Button 
+({
+    x: 128,
+    y: 296,
+    label: "     Back",
+    onClick: function() {
+        currentScene = 0;
+    }
+});
+
+
+//Create a logo image for blackjack (a few cards and a poker chip)
+var splashScreen = function () 
+{
+background(255, 213, 55);
+strokeWeight(2);
+stroke(0, 0, 0);
+
+//Red Chip 5$
+fill(255, 0, 0);
+ellipse(69, 100, 61, 60);
+ellipse(69, 100, 41, 40);
+fill(255, 255, 255);
+rect(61, 70, 10, 10);
+rect(64, 120, 10, 10);
+rect(90, 94, 10, 10);
+fill(255, 255, 255);
+textSize(25);
+text("5$", 58, 108);
+
+//Blue Chip 15$
+fill(0, 68, 255);
+ellipse(285, 99, 61, 60);
+ellipse(285, 99, 41, 40);
+fill(255, 255, 255);
+rect(279, 69, 10, 10);
+rect(254, 94, 10, 10);
+rect(281, 119, 10, 10);
+fill(255, 255, 255);
+text("15$", 265, 109);
+
+
+//Purple Chip 10$
+fill(207, 48, 255);
+ellipse(40, 117, 61, 60);
+ellipse(40, 117, 41, 40);
+fill(255, 255, 255);
+rect(33, 87, 10, 10);
+rect(59, 110, 10, 10);
+rect(33, 136, 10, 10);
+rect(9, 110, 10, 10);
+fill(255, 255, 255);
+text("10$", 18, 127);
+
+
+//Green Chip 20$
+fill(0, 199, 93);
+ellipse(321, 121, 61, 60);
+ellipse(321, 121, 41, 40);
+fill(255, 255, 255);
+text("20$", 301, 131);
+rect(292, 117, 10, 10);
+rect(342, 117, 10, 10);
+rect(317, 141, 10, 10);
+rect(317, 91, 10, 10);
+
+
+
+//Cards 
+strokeWeight(4);
+fill(255, 255, 255);
+rect(103, 4, 89, 125, 20);
+fill(0, 0, 0);
+text("10", 108, 34);
+fill(255, 250, 250);
+rect(131, 13, 89, 125, 20);
+fill(255, 0, 0);
+text("10", 136, 40);
+
+fill(255, 255, 255);
+rect(154, 23, 89, 125, 20);
+fill(255, 0, 0);
+text("A", 161, 51);
+text("A", 217, 135);
+stroke(247, 84, 84);
+triangle(189, 85, 196, 69, 203, 85);
+triangle(189, 86, 196, 100, 203, 87);
+
+stroke(255, 0, 0);
+strokeWeight(3);
+fill(255, 255, 255);
+rect(21, 153, 349, 68, 0);
+fill(0, 0, 0);
+textSize(30);
+text("Welcome to: ", 36, 186);
+fill(0, 0, 0);
+textSize(32);
+
+textSize(30);
+fill(255, 0, 0);
+text("Blackjack!", 210, 188);
+textSize(16);
+
+text('(Also known as "Twenty-One")', 78, 211);
+fill(0, 0, 0);
+fill(255, 255, 255);
+startButton.draw();
+instrucButton.draw();
+fill(255, 0, 0);
+ellipse(100, 257, 10, 10);
+ellipse(100, 318, 10, 10);
+
+
+};
+
+
+
+//Add game instructions  - (Add a button that when clicked brings up a screen that shows how to play Blackjack)
+var gameRule = function () 
+{
+background(255, 213, 55);
+fill(255, 255, 255);
+noStroke();
+rect(151, 32, 93, 39);
+rect(4, 75, 393, 146);
+
+fill(0, 0, 0);
+textSize(19);
+text("RULES: ", 165, 229-170);
+textSize(12);
+text("* To begin, each player is dealt two cards (from a normal deck of 52).", 5, 257-170);
+text("* All cards have value of 2-10. (Face cards = 10). An Ace can be 1 or 11.", 5, 280-170);
+text("* The goal is for the total of the cards to be as close to 21 as possible.", 5, 300-170);
+text("* If the total of the cards is exactly 21 you win", 5, 320-170);
+text("* If the total of the cards goes over 21 you lose", 5, 340-170);
+text("* If there is a tie, the hand will continue until there is a winner ", 5, 360-170);
+text("* Betting increments are set with: 5$, 10$, 15$, and 20$ chips.", 5, 381-170);
+
+backButton.draw();
+
+};
+
+
+//Create the start button for the game that sends the user into a game screen
+var playGame = function () 
+{
+background(242, 210, 0);
+strokeWeight(10);
+stroke(139,69,19);
+fill(111,195,145);
+rect(8, 7, 384, 387, 18);
+strokeWeight(2);
+stroke(255, 255, 255);
+fill(111,195,145);
+rect(231, 17, 84, 109, 20);
+strokeWeight(2);
+stroke(255, 255, 255);
+fill(111,195,145);
+rect(44, 273, 84, 109, 20);
+fill(255, 255, 255);
+text("Dealer", 247, 147);
+text("Player", 61, 262);
+noFill();
+};
+
+
+
+
+
+function getRandomCard() {
+/*this code creates a random "floating point" or decimal number between 0 and 1 and then multiplies it by the length of the array, (52 things in this case) then takes the floor of it (so that it converts it back to the next lowest whole number again). This allows the game to "shuffle" a random card from the cardDeck array everytime it runs*/
+  return cardDeck[floor(random(0,1) * cardDeck.length)];
+}
+
+function getCardValue(card) {
+    /*the cardNumber local variable is taking the first character out of the string in the       array. Our first thought was to use card.slice(0, 1) to extract the card's numeric value     , but that would only work for cards with a value of 2-9. If it becomes a two digit          number (just for 10) it needs another space to be considered. card.length - 1 makes it       so that no matter the size of the string's number value, it will still be taken out and      it turned into a number value with the parseFloat(); function we used later on*/
+  var cardNumber = card.slice(0, card.length - 1);
+  if (cardNumber === 'K' || cardNumber === 'Q' || cardNumber === 'J') {
+    return 10;
+  } else if (cardNumber === 'A') {
+    return 11;
+  } else {
+    /*this command parseFloat(); turns the string (from cardNumber) in our cardDeck array        into an actual number that can be used for the scoring system math. without this it would     just be a string thats not useable to calculate.  
+    W3 Schools reference link --> https://www.w3schools.com/jsref/jsref_parsefloat.asp*/
+    return parseFloat(cardNumber);
+  }
+}
+
+/*score keeping function to get the value of each hand so it can be displayed later on the screen and a winner can be picked*/
+function getHandValue(hand) {
+  var value = 0;
+  var aces = 0;
+  //for loop to "check" through the entire length of a given hand 
+  for (var i = 0; i < hand.length; i++) {
+    /*uses the getCardValue function we made earlier to check the value of the index that it     lands on for each iteration of the loop*/
+    var cardValue = getCardValue(hand[i]);
+    /*special circumstances for aces (can be considered either worth 11 or 1) depending on       the hand*/
+    if (cardValue === 11) {
+      aces = aces + 1;
+    }
+    value = value + cardValue;
+  }
+  while (value > 21 && aces > 0) {
+    value = value - 10;
+    aces = aces - 1;
+  }
+  return value;
+}
+
+
+/*This function is putting everything together (into an actual working game format) that can be called later (with blackjack();) it uses the previously defined functions getHandValue and getRandomCard*/
+function blackjack() {
+  var playerHand = [getRandomCard(), getRandomCard()];
+  var dealerHand = [getRandomCard(), getRandomCard()];
+  var playerValue = getHandValue(playerHand);
+  var dealerValue = getHandValue(dealerHand);
+
+  while (playerValue < 17) {
+    //pushes a new card into player's hand if the value is less than 17
+    playerHand.push(getRandomCard());
+    playerValue = getHandValue(playerHand);
+  }
+
+  while (dealerValue < 17) {
+    //pushes a new card into dealer's hand if the value is less than 17
+    dealerHand.push(getRandomCard());
+    dealerValue = getHandValue(dealerHand);
+  }
+
+  textSize(12);
+  fill(255, 255, 255);
+    /*display for the current hand and the value of each hand (both Player and Dealer)
+    We used the .join method to 
+    W3 schools link --> https://www.w3schools.com/jsref/jsref_join.asp 
+    this just takes the array for each of the player's "hands" and joins the elements      of     the arrays into a string with commas in it*/
+  text("Player's Hand: " + playerHand.join(", "), 300, 550);
+  text("Player Score: " + playerValue, 300, 570);
+  text("Dealer's Hand: " + dealerHand.join(", "), 10, 550);
+  text("Dealer's Score: " + dealerValue, 10, 570);
+
+  if (playerValue > 21) {
+    /*This is the text that actually displays the result of the game. The word "bust"             means a loss in Blackjack */
+    text("Player busts, dealer wins!", 150, 585);
+  } else if (dealerValue > 21) {
+    text("Dealer busts, player wins!", 150, 585);
+  } else if (playerValue > dealerValue) {
+    text("Player wins!", 150, 585);
+  } else if (playerValue < dealerValue) {
+    text("Dealer wins!", 150, 585);
+  } else {
+    
+    text("It's a tie!", 150, 585);
+  }
+}
+
+
+
+
+mouseClicked = function() {
+    
+    if (currentScene === 0)
+    {
+        instrucButton.handleMouseClick();
+        startButton.handleMouseClick();
+    }
+    else if (currentScene === 1)
+    {
+        backButton.handleMouseClick();
+    }
+    else if (currentScene === 2)
+    {
+        fill(0, 0, 0);
+        rect(3, 527, 527, 66);
+        blackjack();
+    }
+};
+
+
+var draw = function() {
+    
+    if (currentScene === 0)
+    {
+        splashScreen();
+    }
+    else if (currentScene === 1)
+    {
+        gameRule();
+    }
+    else if (currentScene === 2)
+    {
+        playGame();
+        noLoop();
+        
+    }
+};
+
+ //The rules are simple, the play is thrilling, and there is opportunity for high strategy. In fact, for the expert player who mathematically plays a perfect game and is able to count cards, the odds are sometimes in that player's favor to win.
+
+
+
+//Make an array - create an array called "cardDeck" array that will hold the 52 cards in a standard deck 
