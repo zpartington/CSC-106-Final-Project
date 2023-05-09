@@ -1,0 +1,1167 @@
+//Bitmoji Info here
+
+
+var drawBody = function(bitmojiX, bitmojiY, h)
+{
+    strokeWeight(2);
+    stroke(179, 171, 98);  
+    fill(240, 230, 140);
+    rect(bitmojiX-(h/150*54), bitmojiY-(h/150*2), h/150*108, h/150*92, h/150*42); //body
+
+    stroke(179, 171, 98);
+    line(bitmojiX-(h/150*31), bitmojiY+(h/150*30), bitmojiX-(h/150*35), bitmojiY+(h/150*86));
+    line(bitmojiX+(h/150*31), bitmojiY+(h/150*30), bitmojiX+(h/150*34), bitmojiY+(h/150*86));
+
+    stroke(8, 8, 8);
+    arc(bitmojiX+(h/150*14), bitmojiY+(h/150*35), h/150*16, h/150*12, 90, 270); //shirt logo
+    line(bitmojiX+(h/150*11), bitmojiY+(h/150*33), bitmojiX+(h/150*17), bitmojiY+(h/150*33));
+    line(bitmojiX+(h/150*11), bitmojiY+(h/150*36), bitmojiX+(h/150*17), bitmojiY+(h/150*36));
+
+    noStroke();
+    fill(5, 5, 5);
+    rect(bitmojiX+(h/150*15), bitmojiY+(h/150*79), h/150*14, h/150*5);
+
+    stroke(230, 185, 126);
+    fill(230, 185, 126);
+    ellipse(bitmojiX,bitmojiY+(h/150*7),h/150*39,h/150*32); //neck 1
+
+    fill(230, 185, 126);
+    ellipse(bitmojiX,bitmojiY-(h/150*31),h/150*57,h/150*89);
+    
+    
+     //inisials
+    textSize(h/150*32);
+    stroke(0, 0, 0);
+    fill(0, 0, 0);
+    text("J M", bitmojiX-(h/150*28), bitmojiY+(h/150*49), 200, 300);
+    
+};
+
+
+var drawHead = function(bitmojiX, bitmojiY, h)
+{
+    strokeWeight(1);
+    stroke(36, 36, 36);
+    fill(241,194,125);
+    bezier(bitmojiX+(h/150*42),bitmojiY-(h/150*53), bitmojiX+(h/150*60), bitmojiY-(h/150*49), bitmojiX+(h/150*41), bitmojiY-(h/150*24), bitmojiX+(h/150*38),bitmojiY-(h/150*26)); //right ear
+    bezier(bitmojiX-(h/150*40),bitmojiY-(h/150*53), bitmojiX-(h/150*57), bitmojiY-(h/150*62), bitmojiX-(h/150*51), bitmojiY-(h/150*31), bitmojiX-(h/150*39),bitmojiY-(h/150*29)); //left ear
+
+    fill(241,194,125);
+    ellipse(bitmojiX,bitmojiY-(h/150*50),h/150*85,h/150*107); //face
+
+    stroke(0,0,0);
+    fill(0, 0, 0);
+    rect(bitmojiX-(h/150*42),bitmojiY-(h/150*64),h/150*3,h/150*16); //hair
+    rect(bitmojiX+(h/150*39),bitmojiY-(h/150*66),h/150*3,h/150*18);
+    
+    fill(241,194,125);
+    strokeWeight(2);
+    stroke(231,106,106);
+    arc(bitmojiX-(h/150*1), bitmojiY-(h/150*22), h/150*34, h/150*11, 0, 180); //mouth
+    
+    fill(241,194,125);
+    stroke(199, 148, 82);
+    bezier(bitmojiX+(h/150*1),bitmojiY-(h/150*51), bitmojiX+(h/150*21), bitmojiY-(h/150*22), bitmojiX+(h/150*9), bitmojiY-(h/150*26), bitmojiX-(h/150*2),bitmojiY-(h/150*28)); //nose
+
+    strokeWeight(2); 
+    fill(225, 193, 110);
+    bezier(bitmojiX-(h/150*42),bitmojiY-(h/150*64), bitmojiX-(h/150*42), bitmojiY-(h/150*120), bitmojiX+(h/150*38), bitmojiY-(h/150*120), bitmojiX+(h/150*43),bitmojiY-(h/150*64)); //hat 1
+
+    fill(225, 193, 110);
+    bezier(bitmojiX-(h/150*42),bitmojiY-(h/150*64), bitmojiX-(h/150*34), bitmojiY-(h/150*97), bitmojiX+(h/150*34), bitmojiY-(h/150*98), bitmojiX+(h/150*43),bitmojiY-(h/150*62)); //hat 2
+    fill(241,194,125);
+    bezier(bitmojiX-(h/150*42),bitmojiY-(h/150*64), bitmojiX-(h/150*21), bitmojiY-(h/150*83), bitmojiX+(h/150*8), bitmojiY-(h/150*96), bitmojiX+(h/150*43),bitmojiY-(h/150*62)); //hat 3
+
+    stroke(13, 12, 12);
+    line(bitmojiX-(h/150*4), bitmojiY-(h/150*97), bitmojiX-(h/150*9), bitmojiY-(h/150*92)); //hat logo
+    line(bitmojiX-(h/150*4), bitmojiY-(h/150*97), bitmojiX-(h/150*7), bitmojiY-(h/150*92));
+    line(bitmojiX-(h/150*4), bitmojiY-(h/150*97), bitmojiX-(h/150*8), bitmojiY-(h/150*92));
+
+    line(bitmojiX+(h/150*11), bitmojiY-(h/150*96), bitmojiX-(h/150*7), bitmojiY-(h/150*93));
+    line(bitmojiX+(h/150*11), bitmojiY-(h/150*96), bitmojiX-(h/150*7), bitmojiY-(h/150*92));
+    
+    strokeWeight(1);
+    stroke(247, 246, 244);
+    fill(247, 246, 244);
+    ellipse(bitmojiX-(h/150*17),bitmojiY-(h/150*55),h/150*21,h/150*10); //left eye
+
+    stroke(247, 246, 244);
+    fill(247, 246, 244);
+    ellipse(bitmojiX+(h/150*16),bitmojiY-(h/150*55),h/150*21,h/150*10); //right eye
+
+    fill(5, 5, 5);
+    ellipse(bitmojiX+(h/150*16),bitmojiY-(h/150*55),h/150*10,h/150*10); //right eye (black)
+
+    fill(5, 5, 5);
+    ellipse(bitmojiX-(h/150*17), bitmojiY-(h/150*55),h/150*10,h/150*10); //right eye (black)
+
+    strokeWeight(3);
+    stroke(92, 64, 51);
+    line(bitmojiX-(h/150*32),bitmojiY-(h/150*63),bitmojiX-(h/150*18),bitmojiY-(h/150*67)); //left eye brow
+    line(bitmojiX-(h/150*6),bitmojiY-(h/150*65),bitmojiX-(h/150*19),bitmojiY-(h/150*67));
+
+    line(bitmojiX+(h/150*29),bitmojiY-(h/150*63),bitmojiX+(h/150*15),bitmojiY-(h/150*67)); //right eye brow
+    line(bitmojiX+(h/150*16),bitmojiY-(h/150*67),bitmojiX+(h/150*5),bitmojiY-(h/150*65));
+
+};
+
+var drawBitmoji = function(bitmojiX, bitmojiY, h)
+{
+    drawBody(bitmojiX, bitmojiY, h);
+    drawHead(bitmojiX, bitmojiY, h);
+};
+
+
+//Zack Bitmoji program 
+
+var drawBitmojiHead2 = function(x, y, bitmojiHeight){ 
+
+//right hat string
+strokeWeight(2);
+stroke(0, 0, 0);
+line(x+163*bitmojiHeight/150, y-12*bitmojiHeight/150, x+124*bitmojiHeight/150, y+105*bitmojiHeight/150);
+
+//head
+stroke(5, 5, 5);
+fill(255,224,189);
+ellipse(x+100*bitmojiHeight/150, y+29*bitmojiHeight/150, 119*bitmojiHeight/150, 158*bitmojiHeight/150); 
+
+//left eye
+noStroke();
+fill(255, 255, 255);
+stroke(0, 0, 0);
+ellipse(x+71*bitmojiHeight/150, y+19*bitmojiHeight/150, 22*bitmojiHeight/150, 20*bitmojiHeight/150);
+
+//right eye
+fill(255, 255, 255);
+stroke(0, 0, 0);
+ellipse(x+122*bitmojiHeight/150, y+19*bitmojiHeight/150, 22*bitmojiHeight/150, 20*bitmojiHeight/150); 
+
+
+//left pupil 
+stroke(0, 0, 0);
+fill(84,42,14);
+ellipse(x+122*bitmojiHeight/150, y+19*bitmojiHeight/150, 10*bitmojiHeight/150, 15*bitmojiHeight/150);
+fill(5, 5, 5);
+ellipse(x+123*bitmojiHeight/150, y+19*bitmojiHeight/150, 5*bitmojiHeight/150, 5*bitmojiHeight/150);
+
+
+//right pupil 
+stroke(0, 0, 0);
+fill(84,42,14);
+ellipse(x+71*bitmojiHeight/150, y+19*bitmojiHeight/150, 11*bitmojiHeight/150, 15*bitmojiHeight/150);
+fill(0, 0, 0);
+ellipse(x+70*bitmojiHeight/150, y+19*bitmojiHeight/150, 5*bitmojiHeight/150, 5*bitmojiHeight/150);
+
+//left ear
+fill(255,224,189);
+stroke(3, 3, 3);
+arc(x+39*bitmojiHeight/150, y+25*bitmojiHeight/150, 21*bitmojiHeight/150, 32*bitmojiHeight/150, 83, 292);
+fill(224, 194, 162);
+stroke(3, 3, 3);
+arc(x+40*bitmojiHeight/150, y+25*bitmojiHeight/150, 12*bitmojiHeight/150, 16*bitmojiHeight/150, 93, 274);
+
+//right ear
+fill(255,224,189);
+stroke(3, 3, 3);
+arc(x+161*bitmojiHeight/150, y+25*bitmojiHeight/150, 21*bitmojiHeight/150, 32*bitmojiHeight/150, -104, 94);
+fill(224, 194, 162);
+stroke(3, 3, 3);
+arc(x+160*bitmojiHeight/150, y+25*bitmojiHeight/150, 13*bitmojiHeight/150, 16*bitmojiHeight/150, -92, 94);
+
+//beard
+fill(255,224,189);
+stroke(84,42,14);
+strokeWeight(3);
+rect(x+70*bitmojiHeight/150, y+58*bitmojiHeight/150, 55*bitmojiHeight/150, 27*bitmojiHeight/150, 1*bitmojiHeight/150);
+fill(84,42,14);
+rect(x+73*bitmojiHeight/150, y+88*bitmojiHeight/150, 52*bitmojiHeight/150, 10*bitmojiHeight/150, 1*bitmojiHeight/150);
+ellipse(x+100*bitmojiHeight/150, y+97*bitmojiHeight/150, 51*bitmojiHeight/150, 18*bitmojiHeight/150);
+noFill();
+arc(x+92*bitmojiHeight/150, y+37*bitmojiHeight/150, 103*bitmojiHeight/150, 134*bitmojiHeight/150, 108, 156);
+fill(84,42,14);
+ellipse(x+71*bitmojiHeight/150, y+90*bitmojiHeight/150, 11*bitmojiHeight/150, 13*bitmojiHeight/150);
+ellipse(x+62*bitmojiHeight/150, y+86*bitmojiHeight/150, 8*bitmojiHeight/150, 8*bitmojiHeight/150);
+ellipse(x+58*bitmojiHeight/150, y+81*bitmojiHeight/150, 8*bitmojiHeight/150, 8*bitmojiHeight/150);
+ellipse(x+52*bitmojiHeight/150, y+76*bitmojiHeight/150, 4*bitmojiHeight/150, 3*bitmojiHeight/150);
+ellipse(x+51*bitmojiHeight/150, y+73*bitmojiHeight/150, 4*bitmojiHeight/150, 3*bitmojiHeight/150);
+ellipse(x+127*bitmojiHeight/150, y+93*bitmojiHeight/150, 7*bitmojiHeight/150, 9*bitmojiHeight/150);
+ellipse(x+133*bitmojiHeight/150, y+89*bitmojiHeight/150, 8*bitmojiHeight/150, 7*bitmojiHeight/150);
+ellipse(x+143*bitmojiHeight/150, y+79*bitmojiHeight/150, 4*bitmojiHeight/150, 4*bitmojiHeight/150);
+ellipse(x+137*bitmojiHeight/150, y+84*bitmojiHeight/150, 8*bitmojiHeight/150, 6*bitmojiHeight/150);
+ellipse(x+146*bitmojiHeight/150, y+76*bitmojiHeight/150, 2*bitmojiHeight/150, 0*bitmojiHeight/150);
+line(x+78*bitmojiHeight/150, y+97*bitmojiHeight/150, x+45*bitmojiHeight/150, y+64*bitmojiHeight/150);
+line(x+116*bitmojiHeight/150, y+94*bitmojiHeight/150, x+151*bitmojiHeight/150, y+70*bitmojiHeight/150);
+
+//mouth
+stroke(8, 8, 8);
+strokeWeight(1);
+fill(255, 217, 217);
+arc(x+98*bitmojiHeight/150, y+66*bitmojiHeight/150, 52*bitmojiHeight/150, 30*bitmojiHeight/150, -3, 193);
+line(x+124*bitmojiHeight/150, y+64*bitmojiHeight/150, x+71*bitmojiHeight/150, y+64*bitmojiHeight/150);
+fill(255, 255, 255);
+rect(x+73*bitmojiHeight/150, y+62*bitmojiHeight/150, 50*bitmojiHeight/150, 7*bitmojiHeight/150, 10*bitmojiHeight/150);
+rect(x+86*bitmojiHeight/150, y+77*bitmojiHeight/150, 23*bitmojiHeight/150, 2*bitmojiHeight/150, 475*bitmojiHeight/150);
+line(x+90*bitmojiHeight/150, y+69*bitmojiHeight/150, x+90*bitmojiHeight/150, y+62*bitmojiHeight/150);
+line(x+99*bitmojiHeight/150, y+69*bitmojiHeight/150, x+99*bitmojiHeight/150, y+62*bitmojiHeight/150);
+line(x+108*bitmojiHeight/150, y+69*bitmojiHeight/150, x+108*bitmojiHeight/150, y+62*bitmojiHeight/150);
+line(x+116*bitmojiHeight/150, y+69*bitmojiHeight/150, x+117*bitmojiHeight/150, y+62*bitmojiHeight/150);
+line(x+82*bitmojiHeight/150, y+69*bitmojiHeight/150, x+82*bitmojiHeight/150, y+62*bitmojiHeight/150);
+
+//left eyebrow
+stroke(84,42,14);
+strokeWeight(5);
+line(x+78*bitmojiHeight/150, y+3*bitmojiHeight/150, x+58*bitmojiHeight/150, y+6*bitmojiHeight/150);
+
+//right eyebrow
+stroke(84,42,14);
+strokeWeight(5);
+line(x+138*bitmojiHeight/150, y+3*bitmojiHeight/150, x+112*bitmojiHeight/150, y+4*bitmojiHeight/150);
+
+//nose 
+stroke(13, 3, 13);
+strokeWeight(0.4);
+fill(255,224,189);
+triangle(x+109*bitmojiHeight/150, y+46*bitmojiHeight/150, x+97*bitmojiHeight/150, y+27*bitmojiHeight/150, x+90*bitmojiHeight/150, y+46*bitmojiHeight/150);
+rect(x+94*bitmojiHeight/150, y+22*bitmojiHeight/150, 8*bitmojiHeight/150, 15*bitmojiHeight/150, 2*bitmojiHeight/150);
+noStroke();
+rect(x+95*bitmojiHeight/150, y+23*bitmojiHeight/150, 7*bitmojiHeight/150, 19*bitmojiHeight/150, 2*bitmojiHeight/150);
+noFill();
+stroke(0, 0, 0);
+arc(x+95*bitmojiHeight/150, y+47*bitmojiHeight/150, 5*bitmojiHeight/150, 9*bitmojiHeight/150, 181, 362);
+arc(x+103*bitmojiHeight/150, y+47*bitmojiHeight/150, 5*bitmojiHeight/150, 9*bitmojiHeight/150, 181, 362);
+
+//hat
+stroke(10, 10, 10);
+strokeWeight(1.5);
+fill(150, 148, 148);
+ellipse(x+96*bitmojiHeight/150, y-25*bitmojiHeight/150, 191*bitmojiHeight/150, 35*bitmojiHeight/150);
+stroke(5, 5, 5);
+rect(x+50*bitmojiHeight/150, y-72*bitmojiHeight/150, 90*bitmojiHeight/150, 47*bitmojiHeight/150, 10*bitmojiHeight/150);
+noStroke();
+rect(x+51*bitmojiHeight/150, y-42*bitmojiHeight/150, 88*bitmojiHeight/150, 32*bitmojiHeight/150, 8*bitmojiHeight/150);
+stroke(5, 5, 5);
+fill(99, 97, 97);
+rect(x+49*bitmojiHeight/150, y-45*bitmojiHeight/150, 91*bitmojiHeight/150, 11*bitmojiHeight/150, 1*bitmojiHeight/150);
+fill(8, 8, 8);
+rect(x+87*bitmojiHeight/150, y-41*bitmojiHeight/150, 17*bitmojiHeight/150, 4*bitmojiHeight/150, 1*bitmojiHeight/150);
+rect(x+87*bitmojiHeight/150, y-41*bitmojiHeight/150, -5*bitmojiHeight/150, 4*bitmojiHeight/150, 1*bitmojiHeight/150);
+
+};
+
+
+var drawBitmojiBody2 = function(x, y, bitmojiHeight){
+
+//shirt
+fill(255, 255, 255);
+quad(x+148*bitmojiHeight/150, y+174*bitmojiHeight/150, x+127*bitmojiHeight/150, y+109*bitmojiHeight/150, x+71*bitmojiHeight/150, y+107*bitmojiHeight/150, x+58*bitmojiHeight/150, y+172*bitmojiHeight/150);
+
+//chest
+fill(255,224,189);
+triangle(x+100*bitmojiHeight/150, y+125*bitmojiHeight/150, x+113*bitmojiHeight/150, y+109*bitmojiHeight/150, x+85*bitmojiHeight/150, y+109*bitmojiHeight/150);
+
+//left string for hat 
+line(x+36*bitmojiHeight/150, y-12*bitmojiHeight/150, x+76*bitmojiHeight/150, y+108*bitmojiHeight/150);
+
+//bottom part of hat string
+noFill();
+strokeWeight(2);
+arc(x+100*bitmojiHeight/150, y+107*bitmojiHeight/150, 48*bitmojiHeight/150, 52*bitmojiHeight/150, -12, 178);
+fill(3, 3, 3);
+rect(x+96*bitmojiHeight/150, y+131*bitmojiHeight/150, 8*bitmojiHeight/150, 3*bitmojiHeight/150, -2*bitmojiHeight/150);
+
+//shirt initials Z
+stroke(255, 0, 0);
+line(x+100*bitmojiHeight/150, y+140*bitmojiHeight/150, x+87*bitmojiHeight/150, y+140*bitmojiHeight/150);
+line(x+101*bitmojiHeight/150, y+140*bitmojiHeight/150, x+88*bitmojiHeight/150, y+160*bitmojiHeight/150);
+line(x+102*bitmojiHeight/150, y+160*bitmojiHeight/150, x+90*bitmojiHeight/150, y+160*bitmojiHeight/150);
+
+
+//shirt initials P
+stroke(255, 0, 0);
+line(x+108*bitmojiHeight/150, y+140*bitmojiHeight/150, x+110*bitmojiHeight/150, y+163*bitmojiHeight/150);
+noFill();
+arc(x+110*bitmojiHeight/150, y+146*bitmojiHeight/150, 19*bitmojiHeight/150, 11*bitmojiHeight/150, -95, 85);
+
+};
+
+
+// sets a variable for bitmoji size calling it b.s.
+
+
+//creates function to call both draw bitmoji head and draw bitmoji body in one step called drawWholeBitmoji
+var drawWholeBitmoji = function(x, y, s) 
+    {
+    drawBitmojiHead2(x+-42, y+-15, s+100);
+    drawBitmojiBody2(x+-41, y+-15, s+100);
+
+};
+
+//end Bitmoji code
+
+
+
+
+
+
+
+
+
+// GOAl --> create a Blackjack program that allows a user to play against a CPU opponent
+
+
+//STEP 1 = create deck of cards and player + dealer hands
+//you want 52 things in this array for 52 cards
+
+//For the purpose of the "cardDeck" Array:
+//there are 4 sets of 9 "number cards" (ranging from 2-10), and 4 sets of 4 "face cards"     //The 4 Face cards are labeled as -->  K = King, Q = Queen, J = Jack, A = Ace
+
+//SUITS OF THE CARDS LISTED BELOW:
+//D = Diamonds
+//H = Hearts
+//C = Clubs
+//S = Spades
+
+var cardDeck = ["2D","3D","4D","5D","6D","7D","8D","9D","10D",
+"2H","3H","4H","5H","6H","7H","8H","9H","10H", 
+"2C","3C","4C","5C","6C","7C","8C","9C","10C", 
+"2S","3S","4S","5S","6S","7S","8S","9S","10S", 
+'KD','QD','JD','AD', 
+'KH','QH','JH','AH', 
+'KC','QC','JC','AC',
+'KS','QS','JS','AS'];
+
+var y = 219;
+var c5 = function()
+{
+//Red Chip 5$
+fill(255, 0, 0);
+ellipse(169, y, 61, 60);
+ellipse(169, y, 41, 40);
+fill(255, 255, 255);
+rect(161, y-30, 10, 10);
+rect(164, y+20, 10, 10);
+rect(190, y-6, 10, 10);
+fill(255, 255, 255);
+textSize(25);
+text("5$", 158, y+8);
+};
+
+var c10 = function()
+{
+//Purple Chip 10$
+fill(207, 48, 255);
+ellipse(140, y+17, 61, 60);
+ellipse(140, y+17, 41, 40);
+fill(255, 255, 255);
+rect(133, y-13, 10, 10);
+rect(159, y+10, 10, 10);
+rect(133, y+36, 10, 10);
+rect(109, y+10, 10, 10);
+fill(255, 255, 255);
+text("10$", 118, y+27);
+};
+
+var c15 = function()
+{
+//Blue Chip 15$
+fill(0, 68, 255);
+ellipse(385, y-1, 61, 60);
+ellipse(385, y-1, 41, 40);
+fill(255, 255, 255);
+rect(379, y-31, 10, 10);
+rect(354, y-6, 10, 10);
+rect(381, y+19, 10, 10);
+fill(255, 255, 255);
+text("15$", 365, y+9);
+};
+
+var c20 = function()
+{
+//Green Chip 20$
+fill(0, 199, 93);
+ellipse(421, y+21, 61, 60);
+ellipse(421, y+21, 41, 40);
+fill(255, 255, 255);
+rect(392, y+17, 10, 10);
+rect(442, y+17, 10, 10);
+rect(417, y+41, 10, 10);
+rect(417, y-9, 10, 10);
+text("20$", 401, y+31);
+};
+
+
+//from there you need to figure you how to 
+//STEP 2- deal the cards
+
+
+
+//STEP 3- tally up scores
+//STEP 4 - see who wins
+
+//from here you would start the process all over again (hint: what would allow you to start this process over again without having to code it all through)
+
+
+//Create another array for the suits (Diamond, Hearts, Clubs, Spades)
+//var cardSuit = [Diamond, Heart, Club, Spade];
+
+
+//array that holds all chips for the player
+
+//player credit
+var credit = 200;
+
+//to store player total bets in one game
+var bet = [0];
+
+//Create start screen for Blackjack game - scene creation
+//Title text - print out the words: BlackJack  in a good looking font  
+
+var currentScene = 0;
+
+//constructors function for chips
+var Chips = function(input) 
+{
+    this.x = input.x || 0;
+    this.y = input.y || 0;
+    this.width = input.width || 0;
+    this.height = input.height || 0;
+    this.color1 = input.color1 || 0;
+    this.color2 = input.color2 || 0;
+    this.color3 = input.color3 || 0;
+    this.monetaryValue = input.monetaryValue || 0;
+    this.color = input.color || 0;
+    this.onClick = input.onClick || function() {};
+};
+
+Chips.prototype.draw = function() 
+{
+    stroke(0, 0, 0);
+    fill(this.color1, this.color2, this.color3);
+    ellipse(this.x+32, this.y+32, this.width, this.height);
+    ellipse(this.x+32, this.y+32, this.width-20, this.height-20);
+    fill(255, 255, 255);
+    rect(this.x+27, this.y+2, this.width-50, this.height-50);
+    rect(this.x+52, this.y+27, this.width-50, this.height-50);
+    rect(this.x+27, this.y+52, this.width-50, this.height-50);
+    rect(this.x+2, this.y+27, this.width-50, this.height-50);
+    fill(255, 255, 255);
+    text(this.monetaryValue + "$", this.x+18, this.y+38);
+};
+
+var chip5 = new Chips 
+({
+    x: 433,
+    y: 63,
+    width : 60,
+    height : 60,
+    color1 : 255,
+    color2 : 0,
+    color3 : 0,
+    monetaryValue : 5,
+    onClick: function() {
+        credit = credit - 5;
+        bet[0] = bet[0] + 5;
+        loop(); }});
+
+var chip10 = new Chips 
+({
+    x: 433,
+    y: 130,
+    width : 60,
+    height : 60,
+    color1 : 207,
+    color2 : 48,
+    color3 : 255,
+    monetaryValue : 10,
+    onClick: function() {
+        credit = credit - 10;
+        bet[0] = bet[0] + 10;
+        loop();
+    }
+});
+
+var chip15 = new Chips 
+({
+    x: 433,
+    y: 196,
+    width : 60,
+    height : 60,
+    color1 : 0,
+    color2 : 68,
+    color3 : 255,
+    monetaryValue : 15,
+    onClick: function() {
+        credit = credit - 15;
+        bet[0] = bet[0] + 15;
+        loop();
+    }
+});
+
+var chip20 = new Chips 
+({
+    x: 433,
+    y: 261,
+    width : 60,
+    height : 60,
+    color1 : 0,
+    color2 : 199,
+    color3 : 93,
+    monetaryValue : 20,
+    onClick: function() {
+        credit = credit - 20;
+        bet[0] = bet[0] + 20;
+        loop(); }});
+
+
+Chips.prototype.isMouseInside = function() 
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+Chips.prototype.handleMouseClick = function() 
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+
+
+
+/* Copy in the Khan Button class */
+var Button = function(config) 
+{
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 150;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+    this.onClick = config.onClick || function() {};
+};
+
+Button.prototype.draw = function() 
+{
+    strokeWeight(4);
+    stroke(255, 23, 23);
+    fill(255, 255, 255);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    //textAlign(LEFT, TOP);
+    text(this.label, this.x+27, this.y+this.height/1.5);
+};
+
+Button.prototype.isMouseInside = function() 
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+
+Button.prototype.handleMouseClick = function() 
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+
+var startButton = new Button 
+({
+    x: 220,
+    y: 132+y,
+    label: "Start Game",
+    onClick: function() {
+        currentScene = 2;
+    }
+});
+
+var instrucButton = new Button 
+({
+    x: 220,
+    y: 195+y,
+    label: "Instructions",
+    onClick: function() {
+        currentScene = 1;
+    }
+});
+
+var backButton = new Button 
+({
+    x: 215,
+    y: 496,
+    label: "     Back",
+    onClick: function() {
+        currentScene = 0;
+    }
+});
+
+
+
+//Create a logo image for blackjack (a few cards and a poker chip)
+
+var splashScreen = function () 
+{
+background(255, 213, 55);
+strokeWeight(2);
+stroke(0, 0, 0);
+
+//Chips
+c5();
+c10();
+c15();
+c20();
+
+//Cards 
+strokeWeight(4);
+fill(255, 255, 255);
+rect(203, y-96, 89, 125, 20);
+fill(0, 0, 0);
+text("10", 208, y-66);
+fill(255, 250, 250);
+rect(231, y-87, 89, 125, 20);
+fill(255, 0, 0);
+text("10", 236, y-60);
+
+fill(255, 255, 255);
+rect(254, y-77, 89, 125, 20);
+fill(255, 0, 0);
+text("A", 261, y-49);
+text("A", 317, y+35);
+stroke(247, 84, 84);
+
+
+stroke(255, 0, 0);
+strokeWeight(3);
+fill(255, 255, 255);
+rect(121, y+53, 349, 68, 0);
+fill(0, 0, 0);
+textSize(30);
+text("Welcome to: ", 136, y+86);
+
+fill(0, 0, 0);
+textSize(34);
+var f = createFont("fantasy");
+textFont(f);
+fill(255, 0, 0);
+text("Blackjack!", 310, y+88);
+
+var f = createFont("sans-serif");
+textFont(f);
+textSize(16);
+text('(Also known as "Twenty-One")', 186, y+111);
+fill(0, 0, 0);
+fill(255, 255, 255);
+startButton.draw();
+instrucButton.draw();
+fill(255, 0, 0);
+ellipse(200, y+157, 10, 10);
+ellipse(200, y+218, 10, 10);
+
+fill(255, 0, 0);
+textSize(43);
+text("♥", 286, y-1);
+};
+
+
+
+//Add game instructions  - (Add a button that when clicked brings up a screen that shows how to play Blackjack)
+var x = 57;
+var z = 140;
+var gameRule = function () 
+{
+background(255, 213, 55);
+fill(255, 255, 255);
+noStroke();
+rect(250, 58, 100, 39);
+rect(46, 114, 529, 223);
+
+fill(0, 0, 0);
+textSize(26);
+text("RULES: ", 255, 87);
+textSize(16);
+text("* To begin, each player is dealt two cards (from a normal deck of 52).", x, z+30);
+text("* All cards have value of 2-10. (Face cards = 10). An Ace can be 1 or 11.", x, z+60);
+text("* The goal is for the total of the cards to be as close to 21 as possible.", x, z+90);
+text("* If the total of the cards is exactly 21 you win", x, z+120);
+text("* If the total of the cards goes over 21 you lose", x, z);
+text("* If there is a tie, the hand will continue until there is a winner ", x, z+150);
+text("* Betting increments are set with: 5$, 10$, 15$, and 20$ chips.", x, z+180);
+
+backButton.draw();
+
+};
+
+
+//Create the start button for the game that sends the user into a game screen
+var playGame = function () 
+{
+background(242, 210, 0);
+strokeWeight(10);
+stroke(139,69,19);
+fill(111,195,145);
+rect(8, 7, 384, 387, 18);
+strokeWeight(2);
+stroke(255, 255, 255);
+fill(111,195,145);
+rect(294, 17, 84, 109, 20);
+strokeWeight(2);
+stroke(255, 255, 255);
+fill(111,195,145);
+rect(19, 273, 84, 109, 20);
+fill(255, 255, 255);
+textSize(18);
+text("Dealer", 313, 147);
+text("Player", 27, 262);
+noFill();
+
+fill(255, 0, 0);
+        textSize(86);
+        stroke(255, 5, 5);
+        fill(255, 0, 238);
+        text("🂠", 312, 101);
+        fill(255, 255, 255);
+        rect(538, 527, 57, 66);
+        textSize(27);
+        fill(0, 0, 0);
+        text("♣", 544, 584);
+        fill(255, 0, 0);
+        text("♦", 545, 550);
+        fill(255, 0, 0);
+        text("♥", 575, 583);
+        fill(0, 0, 0);
+        text("♠", 575, 549);
+        //bottom console log
+        fill(255, 255, 255);
+        rect(3, 526, 527, 66);
+        noStroke();
+    
+        fill(0, 0, 0);
+        stroke(255, 0, 0);
+        rect(537, 4, 59, 515);
+        fill(255, 0, 0);
+        rect(546, 264, 40, 210);
+        
+        fill(255, 255, 255);
+        textSize(48);
+        text("B", 550, 57);
+        text("L", 552, 103);
+        text("A", 550, 154);
+        text("C", 548, 202);
+        text("K", 550, 253);
+        fill(255, 255, 255);
+        text("J", 550, 307);
+        text("A", 550, 357);
+        text("C", 548, 409);
+        text("K", 550, 463);
+        textSize(28);
+        stroke(255, 0, 0);
+        fill(0, 0, 0);
+        rect(417, 4, 102, 43);
+        fill(255, 255, 255);
+        text("Bets:", 438, 34);
+        rect(417, 56, 102, 279);
+        textSize(18);
+        fill(250, 250, 250);
+        text("♣", 177, 216);
+        fill(255, 255, 255);
+        text("♦", 179, 193);
+        fill(255, 255, 255);
+        text("♥", 200, 215);
+        fill(255, 255, 255);
+        text("♠", 200, 193);
+        noFill();
+        strokeWeight(2);
+        stroke(255, 255, 255);
+        rect(169, 177, 49, 46, 10);
+        chip5.draw();
+        chip10.draw();
+        chip15.draw();
+        chip20.draw();
+        textSize(25);
+        fill(0, 0, 0);
+        text("$ " + credit, 436, 367);
+        text("$ " + bet[0], 310, 248);
+
+};
+
+
+
+
+
+var getRandomCard = function() {
+/*this code creates a random "floating point" or decimal number between 0 and 1 and then multiplies it by the length of the array, (52 things in this case) then takes the floor of it (so that it converts it back to the next lowest whole number again). This allows the game to "shuffle" a random card from the cardDeck array everytime it runs*/
+  return cardDeck[floor(random(0,1) * cardDeck.length)];
+};
+
+var getCardValue = function(card) {
+    /*the cardNumber local variable is taking the first character      out of the string in the       array. Our first thought was to     use card.slice(0, 1) to extract the card's numeric value     ,     but that would only work for cards with a value of 2-9. If it      becomes a two digit number (just for 10) it needs another space     to be considered. card.length - 1 makes it       so that no        matter the size of the string's number value, it will still be     taken out and it turned into a number value with the parseFloat     (); function we used later on*/
+ var cardNumber = card.slice(0, card.length - 1);
+  if (cardNumber === 'K' || cardNumber === 'Q' || cardNumber === 'J') {
+    return 10;
+  } else if (cardNumber === 'A') {
+    return 11;
+  } else {
+    /*this command parseFloat(); turns the string (from cardNumber)     in our cardDeck array into an actual number that can be            used for the scoring system math. without this it would            just be a string thats not useable to calculate.  
+    W3 Schools reference link --> https://www.w3schools.com/jsref      /jsref_parsefloat.asp*/
+    return parseFloat(cardNumber);
+  }
+};
+
+/*score keeping function to get the value of each hand so it can be displayed later on the screen and a winner can be picked*/
+var getHandValue = function(hand) {
+  var value = 0;
+  var aces = 0;
+  //for loop to "check" through the entire length of a given hand 
+  for (var i = 0; i < hand.length; i++) {
+    /*uses the getCardValue function we made earlier to check the      value of the index that it     lands on for each iteration of      the loop*/
+    var cardValue = getCardValue(hand[i]);
+    /*special circumstances for aces (can be considered either         worth 11 or 1) depending on the hand*/
+    if (cardValue === 11) {
+      aces = aces + 1;
+    }
+    value = value + cardValue;
+  }
+  while (value > 21 && aces > 0) {
+    value = value - 10;
+    aces = aces - 1;
+  }
+  return value;
+};
+
+
+
+/*This function is putting everything together (into an actual working game format) that can be called later (with blackjack();) it uses the previously defined functions getHandValue and getRandomCard*/
+
+var playerHand = [];
+var playerValue = getHandValue(playerHand);
+var dealerHand = [];
+var dealerValue = getHandValue(dealerHand);
+
+var  blackjack = function() {
+
+  while (playerValue < 17) {
+    //pushes a new card into player's hand while the value is less        than 17
+    playerHand.push(getRandomCard());
+    playerValue = getHandValue(playerHand);
+  }
+};
+
+var symbolCards = { 
+    //Spades
+    "AS": "🂡",
+    "2S": "🂢",
+    "3S": "🂣",
+    "4S": "🂤",
+    "5S": "🂥",
+    "6S": "🂦",
+    "7S": "🂧",
+    "8S": "🂨",
+    "9S": "🂩",
+    "10S": "🂪",
+    "JS": "🂫",
+    "QS": "🂭",
+    "KS": "🂮",
+    
+    //Hearts
+    "AH": "🂱",
+    "2H": "🂲",
+    "3H": "🂳",
+    "4H": "🂴",
+    "5H": "🂵",
+    "6H": "🂶",
+    "7H": "🂷",
+    "8H": "🂸",
+    "9H": "🂹",
+    "10H": "🂺",
+    "JH": "🂻",
+    "QH": "🂽",
+    "KH": "🂾",
+    
+    //Diamonds
+    "AD": "🃁",
+    "2D": "🃂",
+    "3D": "🃃",
+    "4D": "🃄",
+    "5D": "🃅",
+    "6D": "🃆",
+    "7D": "🃇",
+    "8D": "🃈",
+    "9D": "🃉",
+    "10D": "🃊",
+    "JD": "🃋",
+    "QD": "🃍",
+    "KD": "🃎",
+    
+    
+    //Clubs
+    "AC": "🃑",
+    "2C": "🃒",
+    "3C": "🃓",
+    "4C": "🃔",
+    "5C": "🃕",
+    "6C": "🃖",
+    "7C": "🃗",
+    "8C": "🃘", 
+    "9C": "🃙",
+    "10C": "🃚",
+    "JC": "🃛",
+    "QC": "🃝", 
+    "KC": "🃞",
+};
+
+var contButton = new Button 
+({
+    x: 126,
+    y: 222,
+    label: "  Continue",
+    onClick: function() {
+        if (credit > 0 && bet[0] > 0)
+        {
+            bet[0] = 0;
+            playerHand.length = 0;
+            dealerHand.length = 0;
+            playerValue = 0;
+            dealerValue = 0;
+            playGame();
+        }
+    loop();
+    } 
+ });
+
+var hitButton = new Button 
+({
+    x: 20,
+    y: 428,
+    label: "       Hit",
+    onClick: function() {
+    if (playerValue < 21)
+    {
+    playerHand.push(getRandomCard());
+    playerValue = getHandValue(playerHand);
+    fill(0, 0, 0);
+    rect(257, 528, 269, 63);
+    fill(255, 255, 255);
+    textSize(13);
+    text("Player's Hand: " + playerHand.join(", "), 260, 550);
+    text("Player Score: " + playerValue, 300, 570);
+    
+    dealerHand.push(getRandomCard());
+    dealerValue = getHandValue(dealerHand);
+    fill(0, 0, 0);
+    rect(3, 528, 250, 63);
+    }
+    
+    if(playerValue === 21)
+    {
+    textSize(24);
+    fill(255, 0, 0);
+    text("21 - *Blackjack* you win $" + bet[0] + "!", 56, 205); 
+    credit = credit + (2 * bet[0]);
+    contButton.draw();
+    }
+    if (playerValue > 21)
+    {
+    textSize(30);
+    fill(255, 0, 0);
+    text("Bust you lose!", 110, 205);
+    contButton.draw();
+    }
+    
+    for (var i = 0; i < playerHand.length; i++)
+    {
+    fill(0, 0, 0);
+    textSize(100);
+    text(symbolCards[playerHand[i]], 70 *i +30, 365);
+    }
+    
+    //To only show the dealer's first card when clicking the hit button
+    if (playerValue < 21)
+    {
+    fill(255, 0, 0);
+    textSize(100);
+    fill(255, 0, 255);
+    text(symbolCards[dealerHand[0]], 30, 121);
+    }
+    
+    //To show the dealer cards when player lose because the cards value is more than 21
+    else if (playerValue > 21)
+    {
+    for (var i = 0; i < dealerHand.length; i++)
+    {
+    fill(255, 0, 0);
+    textSize(100);
+    fill(255, 0, 255);
+    text(symbolCards[dealerHand[i]], 70 *i +30, 121);
+    }
+    textSize(12);
+    fill(255, 255, 255);
+    text("Dealer's Hand: " + dealerHand.join(", "), 10, 550);
+    text("Dealer's Score: " + dealerValue, 10, 570);
+    }
+    
+ }});
+
+var standButton = new Button 
+({
+    x: 225,
+    y: 428,
+    label: "     Stand",
+    onClick: function() 
+{
+    while (dealerValue < 17 && playerHand.length > 0  ) 
+    {
+    //pushes a new card into dealer's hand if the value is less        than 17
+    fill(0, 0, 0);
+    rect(3, 528, 250, 63);
+    dealerHand.push(getRandomCard());
+    dealerValue = getHandValue(dealerHand);
+    
+    //To show the dealer's cards when the player win or when the dealer win and the dealer value is more than the player value
+    for (var i = 0; i < dealerHand.length; i++)
+    {
+    fill(255, 0, 0);
+    textSize(100);
+    fill(255, 0, 255);
+    text(symbolCards[dealerHand[i]], 70 *i +30, 121);
+    }
+    }
+
+  textSize(12);
+  fill(255, 255, 255);
+    /*display for the current hand and the value of each hand (both     Player and Dealer) We used the .join method to 
+    W3 schools link --> https://www.w3schools.com/jsref/jsref_join     .asp 
+    this just takes the array for each of the player's "hands" and     joins the elements of the arrays into a string with commas in      it*/
+  
+  text("Dealer's Hand: " + dealerHand.join(", "), 10, 550);
+  text("Dealer's Score: " + dealerValue, 10, 570);
+
+  if (playerValue > 21) 
+  {
+    /*This is the text that actually displays the result of the        game. The word "bust" means a loss in Blackjack */
+    fill(255, 0, 0);
+    textSize(30);
+    text("Player busts, dealer wins!", 110, 205);
+    contButton.draw();
+  } else if (dealerValue > 21) {
+    fill(255, 0, 0);
+    textSize(24);
+    text("Dealer busts, player win $" + bet[0] + "!", 47, 205);
+    credit = credit + (2 * bet[0]);
+    contButton.draw();
+  } else if (playerValue > dealerValue) {
+    fill(255, 0, 0);
+    textSize(30);
+    text("Player wins $" + bet[0] + "!", 94, 205);
+    credit = credit + (2 * bet[0]);
+    contButton.draw();
+  } else if (playerValue < dealerValue) {
+    fill(255, 0, 0);
+    textSize(30);
+    text("You Lost - Dealer wins!", 40, 205);
+    contButton.draw();
+  } else {
+    fill(255, 0, 0);
+    textSize(30);
+    text("It's a tie!", 110, 205);
+    contButton.draw();
+  }
+  
+  
+  for (var i = 0; i < dealerHand.length; i++)
+    {
+    fill(255, 0, 0);
+    textSize(100);
+    fill(255, 0, 255);
+    text(symbolCards[dealerHand[i]], 70 *i +30, 121);
+    }
+    
+  }});
+
+//Allow user to choose hit or stand only after they make a bet
+var dealButton = new Button 
+({
+    x: 126,
+    y: 296,
+    label: "     Deal",
+    onClick: function() {
+        playGame();
+        standButton.draw();
+        hitButton.draw();
+    noLoop(); 
+    } 
+ });
+
+var mouseClicked = function() {
+    if (currentScene === 0)
+    {
+        instrucButton.handleMouseClick();
+        startButton.handleMouseClick();
+    }
+    else if (currentScene === 1)
+    {
+        backButton.handleMouseClick();
+    }
+    else if (currentScene === 2)
+    {
+        fill(0, 0, 0);
+        stroke(255, 0, 0);
+        hitButton.handleMouseClick();
+        standButton.handleMouseClick();
+        contButton.handleMouseClick();
+        dealButton.handleMouseClick();
+        chip5.handleMouseClick();
+        chip10.handleMouseClick();
+        chip15.handleMouseClick();
+        chip20.handleMouseClick();
+    }
+};
+
+
+
+var draw = function() {
+    if (currentScene === 0)
+    {
+        splashScreen();
+        drawWholeBitmoji(242, 522, -45);
+        drawBitmoji(355, 532, 74);
+        textSize(15);
+        text("Created by Zack P. and Johsua M.", 188, 596);
+    }
+    else if (currentScene === 1)
+    {
+        gameRule();
+    }
+    else if (currentScene === 2)
+    {
+        playGame();
+        
+        if (bet[0] === 0)
+    {
+        textSize(25);
+        fill(0, 0, 0);
+        text("Place Your Bets", 107, 152);
+        drawWholeBitmoji(442, 445, -61);
+        drawBitmoji(500, 450, 51);
+        text("Created by Zack P. and Johsua M.", 367, 504);
+    }        
+    else 
+    {
+        //after clicking the deal button, will show the hit and stand button
+        dealButton.draw();
+        noLoop();
+    }
+    }
+};
+
+
+
+//clubs (♣), diamonds (♦), hearts (♥), and spades (♠)
+// Link --> https://symbl.cc/en/unicode/blocks/playing-cards/
+//found these symbols and cards as text on the above website
+
+//cards in symbol form array
